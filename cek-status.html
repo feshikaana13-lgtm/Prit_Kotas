@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cek Status Pengaduan - PRIT-KOTAS BPS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-fade">
+
+  <nav class="navbar-desain">
+    <a href="index.html" class="navbar-brand">
+      <img src="logo.png" alt="Logo BPS" onerror="this.style.display='none';">
+      <div class="navbar-brand-text">
+        <h3>PRIT-KOTAS</h3>
+        <span>BPS Kota Tasikmalaya</span>
+      </div>
+    </a>
+    <a href="login.html" class="btn-login">Login Admin</a>
+  </nav>
+
+  <main style="flex: 1; padding: 0 5%;">
+    <div class="search-container" id="searchBoxWrapper">
+      <span class="tag-pill">Pelacakan Mandiri</span>
+      <h1 style="font-size: 1.8rem; margin: 0.8rem 0 0.5rem 0;">Cek Status Pengaduan</h1>
+      <p style="color: var(--teks-muted); font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.5;">
+        Masukkan alamat email yang Anda gunakan saat mengajukan laporan untuk melihat perkembangan penanganan secara transparan. Tidak perlu login atau membuat akun.
+      </p>
+
+      <form id="cekStatusForm">
+        <div class="form-group">
+          <label>Alamat Email Pelapor *</label>
+          <input type="email" id="searchEmail" required placeholder="email@contoh.com">
+          <small>Email harus sama dengan yang didaftarkan pada laporan.</small>
+        </div>
+        <button type="submit" class="btn-primary btn-block" id="btnCari" style="padding: 0.8rem; font-size: 1rem; margin-top: 1rem;">
+          <i class="fa-solid fa-magnifying-glass"></i> Cari Laporan
+        </button>
+      </form>
+
+      <p style="margin-top: 1.5rem; font-size: 0.85rem;">
+        Ingin tahu hak Anda sebagai pelapor? Baca <a href="panduan.html">Hak-hak Pelapor</a>.
+      </p>
+    </div>
+
+    <div id="resultContainer" class="result-container">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 0.5rem;">
+        <h3 style="margin: 0; font-size: 1.2rem;">Hasil Pelacakan Laporan</h3>
+        <button onclick="resetPencarian()" style="background: none; border: none; color: var(--merah-utama); font-weight: 600; cursor: pointer; font-size: 0.9rem; font-family: inherit;">
+          ← Cari Email Lain
+        </button>
+      </div>
+      <div id="listHasilLaporan">
+      </div>
+    </div>
+
+    <button type="button" class="floating-back-button" title="Kembali ke halaman sebelumnya" aria-label="Kembali ke halaman sebelumnya" onclick="if (history.length > 1) { history.back(); } else { window.location.href = 'index.html'; }">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+  </main>
+
+  <footer class="footer-desain footer-desain-center">
+    <div>
+      <strong style="color: var(--merah-gelap);">PRIT-KOTAS</strong> &copy; 2026 A3N2. BPS Kota Tasikmalaya. 
+    </div>
+  </footer>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

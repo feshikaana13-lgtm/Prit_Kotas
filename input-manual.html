@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konsultasi DataSEN - PRIT-KOTAS BPS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-fade">
+
+  <nav class="navbar-desain">
+    <div class="navbar-brand">
+      <img src="logo.png" alt="Logo BPS" onerror="this.style.display='none';">
+      <div class="navbar-brand-text">
+        <h3>BADAN PUSAT STATISTIK</h3>
+        <span>KOTA TASIKMALAYA</span>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <span style="font-size: 0.9rem; font-weight: 500;">Halo, <strong>Pegawai</strong></span>
+      <a href="dashboard-staf.html" class="btn-outline" style="font-size: 0.85rem; padding: 0.45rem 0.9rem;"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
+    </div>
+  </nav>
+
+  <main style="flex: 1; max-width: 760px; width: 92%; margin: 2.5rem auto 3.5rem auto;">
+
+    <div id="formContainer">
+      <div style="margin-bottom: 1.5rem;">
+        <span class="tag-pill"><i class="fa-solid fa-building-user"></i> Konsultasi DataSEN</span>
+        <h1 style="font-size: 1.8rem; margin: 0.4rem 0 0.3rem 0;">Formulir Konsultasi DataSEN BPS Kota Tasikmalaya</h1>
+        <p style="color: var(--teks-muted); margin: 0; font-size: 0.95rem;">Gunakan formulir ini untuk mencatat konsultasi yang disampaikan langsung oleh pelapor di kantor, lengkap dengan jawaban petugas yang diberikan saat itu juga.</p>
+      </div>
+
+      <div class="alert alert-error" id="errorAlert">Mohon lengkapi semua kolom wajib bertanda (*).</div>
+
+      <form id="offlineForm">
+
+        <section class="form-section reveal">
+          <h3 class="form-section-title"><i class="fa-solid fa-calendar-days"></i> Tanggal Konsultasi *</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="tanggalPengaduan">Tanggal Konsultasi *</label>
+              <input type="date" id="tanggalPengaduan" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="namaPetugas">Nama Pegawai/Petugas yang Menginput *</label>
+              <input type="text" id="namaPetugas" required placeholder="Masukkan nama pegawai/petugas">
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section reveal">
+          <h3 class="form-section-title"><i class="fa-solid fa-id-card"></i> Data Klien</h3>
+          <div class="form-group">
+            <label>Nama Lengkap *</label>
+            <input type="text" id="nama" required placeholder="Masukkan nama lengkap pelapor">
+          </div>
+          <div class="form-group">
+            <label>Alamat *</label>
+            <input type="text" id="alamat" required placeholder="Alamat domisili pelapor">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label>No. HP *</label>
+            <input type="text" id="noHp" required placeholder="08xxxxxxxxxx" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+          </div>
+        </section>
+
+        <section class="form-section reveal">
+          <h3 class="form-section-title"><i class="fa-solid fa-file-lines"></i> Materi Konsultasi *</h3>
+          <div class="form-group" style="margin-bottom: 0;">
+            <textarea id="materiPengaduan" rows="4" required placeholder="Tuliskan materi/isi konsultasi yang disampaikan pelapor secara langsung..."></textarea>
+          </div>
+        </section>
+
+        <section class="form-section reveal">
+          <h3 class="form-section-title"><i class="fa-solid fa-comment-dots"></i> Jawaban Petugas *</h3>
+          <div class="form-group" style="margin-bottom: 0;">
+            <textarea id="jawabanPetugas" rows="4" required placeholder="Tuliskan jawaban/tanggapan yang diberikan petugas kepada pelapor saat itu juga..."></textarea>
+          </div>
+        </section>
+
+        <section class="form-section reveal">
+          <h3 class="form-section-title"><i class="fa-solid fa-camera"></i> Dokumentasi *</h3>
+          <div class="dropzone" id="dropzone">
+            <span class="dz-icon"><i class="fa-solid fa-cloud-arrow-up"></i></span>
+            <div id="dropzoneLabel"><strong>Unggah 1 foto/gambar dokumentasi</strong> atau seret ke sini</div>
+            <small>Format gambar, maksimal 10 MB</small>
+          </div>
+          <input type="file" id="dokumentasi" accept="image/*" required style="display:none;">
+        </section>
+
+        <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 0.5rem;">
+          <a href="dashboard-staf.html" class="btn-outline">Batal</a>
+          <button type="submit" class="btn-primary" id="btnSimpan" style="padding: 0.75rem 1.5rem;">
+            <i class="fa-solid fa-floppy-disk"></i> Simpan Konsultasi
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div id="successContainer" class="success-card">
+      <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+      <h2 style="color: var(--hijau-sukses); margin-bottom: 0.5rem; font-size: 1.5rem;">Konsultasi DataSEN Berhasil Disimpan</h2>
+      <p style="color: var(--teks-muted); margin-bottom: 2rem; font-size: 0.95rem; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+        Data konsultasi tatap muka beserta jawaban petugas telah tercatat di sistem pusat PRIT-KOTAS BPS.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <button onclick="location.reload()" class="btn-outline">Input Konsultasi Lain</button>
+        <a href="dashboard-staf.html" class="btn-primary">Kembali ke Dashboard</a>
+      </div>
+    </div>
+
+  </main>
+
+  <button type="button" class="floating-back-button" title="Kembali ke dashboard" aria-label="Kembali ke dashboard" onclick="if (history.length > 1) { history.back(); } else { window.location.href = 'dashboard-staf.html'; }">
+    <i class="fa-solid fa-arrow-left"></i>
+  </button>
+
+  <footer class="footer-desain footer-desain-center">
+    <div>
+      <strong style="color: var(--merah-gelap);">PRIT-KOTAS</strong> &copy; 2026 A3N2. BPS Kota Tasikmalaya. 
+    </div>
+  </footer>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

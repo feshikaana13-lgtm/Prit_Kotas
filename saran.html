@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saran & Aspirasi - PRIT-KOTAS BPS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-fade">
+
+  <nav class="navbar-desain">
+    <a href="index.html" class="navbar-brand">
+      <img src="logo.png" alt="Logo BPS" onerror="this.style.display='none';">
+      <div class="navbar-brand-text">
+        <h3>PRIT-KOTAS</h3>
+        <span>BPS Kota Tasikmalaya</span>
+      </div>
+    </a>
+    <a href="login.html" class="btn-login">Login Admin</a>
+  </nav>
+
+  <main style="flex: 1;">
+    <div style="max-width: 800px; width: 92%; margin: 2.5rem auto 3.5rem auto;">
+
+      <div id="saranFormWrap">
+        <div class="form-section reveal">
+          <div style="margin-bottom: 1.5rem;">
+            <span class="tag-pill">Ruang Aspirasi Masyarakat</span>
+            <h1 style="font-size: 1.6rem; margin: 0.3rem 0 0.4rem 0;">KoSan (Kotak Saran)</h1>
+            <p style="color: var(--teks-muted); font-size: 0.9rem; margin: 0;">
+              Halaman ini disediakan khusus bagi masyarakat yang ingin memberikan pendapat, ide, aspirasi, atau usulan pengembangan pelayanan terpisah dari fitur pengaduan pelanggaran.
+            </p>
+          </div>
+
+          <div class="alert alert-error" id="saranErrorAlert">Mohon lengkapi kolom wajib.</div>
+
+          <form id="saranForm">
+            <div style="margin-bottom: 1.5rem;">
+              <h3 class="form-section-title">1. Identitas Pengirim</h3>
+                <div class="form-group">
+                  <label for="tanggalSaran">Tanggal Penyampaian Saran *</label>
+                  <input type="date" id="tanggalSaran" required>
+                </div>
+              <div class="form-group">
+                <label>Nama Lengkap *</label>
+                <input type="text" id="saranNama" required placeholder="Nama lengkap Anda">
+              </div>
+              <div class="grid-2 saran-identitas-grid">
+                <div class="form-group">
+                  <label>Alamat Email *</label>
+                  <input type="email" id="saranEmail" required placeholder="email@anda.com">
+                </div>
+                <div class="form-group">
+                  <label>
+                    Nomor Telepon / WhatsApp
+                    <span class="saran-phone-hint">Tindakan lanjut saran yang disampaikan akan dikirimkan ke no WA berikut.</span>
+                  </label>
+                  <input type="text" id="saranTelepon" placeholder="08xxxxxxxxxx" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+              <h3 class="form-section-title">2. Kategori Saran *</h3>
+              <div class="radio-list">
+                <label class="radio-option">
+                  <input type="radio" name="kategoriSaran" value="Kualitas Pelayanan" required>
+                  <span>Kualitas Pelayanan</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="kategoriSaran" value="Sistem & Aplikasi">
+                  <span>Sistem & Aplikasi (PRIT-KOTAS)</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="kategoriSaran" value="Fasilitas Kantor">
+                  <span>Fasilitas Kantor</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="kategoriSaran" value="Apresiasi">
+                  <span>Apresiasi / Ucapan Terima Kasih</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="kategoriSaran" value="Lainnya">
+                  <span>Lainnya</span>
+                </label>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 0.5rem;">
+              <h3 class="form-section-title">3. Judul & Isi Saran</h3>
+              <div class="form-group">
+                <label>Judul Saran *</label>
+                <input type="text" id="saranJudul" required placeholder="Ringkasan singkat saran Anda">
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label>Isi Saran / Aspirasi *</label>
+                <textarea id="saranIsi" rows="6" required placeholder="Tuliskan saran, pendapat, atau usulan Anda secara lengkap..."></textarea>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 0.5rem;">
+              <h3 class="form-section-title"><i class="fa-solid fa-paperclip"></i> 4. Berkas Pendukung</h3>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="lampiranSaran">Lampiran Berkas</label>
+                <div class="dropzone" id="dropzoneSaran">
+                  <span class="dz-icon"><i class="fa-solid fa-cloud-arrow-up"></i></span>
+                  <div id="dropzoneSaranLabel"><strong>Unggah berkas pendukung</strong> atau seret ke sini</div>
+                  <small>Dokumen atau gambar, maksimal 10 file dan 10 MB per file.</small>
+                </div>
+                <input type="file" id="lampiranSaran" multiple accept="image/*,.pdf,.doc,.docx,.xls,.xlsx" style="display: none;">
+              </div>
+            </div>
+
+            <div style="text-align: right; margin-top: 1.5rem;">
+              <button type="submit" class="btn-primary" id="btnKirimSaran" style="padding: 0.75rem 2rem;">Kirim Saran</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div id="saranSuccessCard" class="success-card">
+        <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+        <h2 style="color: var(--hijau-sukses); margin-bottom: 0.5rem;">Saran Berhasil Dikirim</h2>
+        <p style="color: var(--teks-muted); margin-bottom: 1.8rem; font-size: 0.95rem; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+          Terima kasih atas masukan Anda. Saran ini akan menjadi bahan pertimbangan BPS Kota Tasikmalaya untuk meningkatkan kualitas pelayanan.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+          <a href="index.html" class="btn-primary">Kembali ke Beranda</a>
+          <a href="pengaduan.html" class="btn-outline">Ajukan Pengaduan</a>
+        </div>
+      </div>
+
+    </div>
+    <button type="button" class="floating-back-button" title="Kembali ke halaman sebelumnya" aria-label="Kembali ke halaman sebelumnya" onclick="if (history.length > 1) { history.back(); } else { window.location.href = 'index.html'; }">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+  </main>
+
+  <footer class="footer-desain footer-desain-center">
+    <div>
+      <strong style="color: var(--merah-gelap);">PRIT-KOTAS</strong> &copy; 2026 A3N2. BPS Kota Tasikmalaya. 
+    </div>
+  </footer>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

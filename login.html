@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Portal Staf - PRIT-KOTAS BPS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-wrapper">
+
+  <div class="login-card">
+
+    <div class="login-card-left">
+      <div class="login-brand-row">
+        <img src="prit_kotas.png" alt="Logo BPS" onerror="this.style.display='none';">
+        <h1>PRIT-KOTAS</h1>
+      </div>
+      <h2>Portal Pengelola Pengaduan Internal</h2>
+      <p>
+        Akses khusus pegawai BPS Kota Tasikmalaya untuk memantau, memverifikasi, menindaklanjuti, dan mengelola pelaporan dugaan pelanggaran serta saran masyarakat secara terpadu dan aman.
+      </p>
+
+      <ul class="login-feature-list">
+        <li>
+          <span class="feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </span>
+          <span>Pantau dan tindak lanjuti seluruh pengaduan dari satu dashboard.</span>
+        </li>
+        <li>
+          <span class="feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </span>
+          <span>Akses dibatasi hanya untuk pegawai berwenang.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="login-card-right">
+      <div class="login-icon-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+
+      <div class="login-box-header">
+        <h2>Masuk ke Dashboard</h2>
+        <p>Silakan masukkan kredensial akun pegawai Anda.</p>
+      </div>
+
+      <div class="alert alert-error" id="loginError">Email atau kata sandi tidak valid.</div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Email Pegawai</label>
+          <div class="input-icon-group">
+            <span class="input-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+            </span>
+            <input type="email" id="adminEmail" required placeholder="admin@bps.go.id" autocomplete="username">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Kata Sandi</label>
+          <div class="input-icon-group">
+            <span class="input-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </span>
+            <input type="password" id="adminPassword" required placeholder="••••••••" autocomplete="current-password">
+            <button type="button" id="togglePassword" class="toggle-password-btn" aria-label="Tampilkan kata sandi">
+              <span class="icon-eye">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </span>
+              <span class="icon-eye-off">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><path d="M6.61 6.61A18.5 18.5 0 0 0 1 12s4 8 11 8a9.26 9.26 0 0 0 5.39-1.61"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary btn-block" id="btnLogin" style="padding: 0.75rem; font-size: 0.92rem; margin-top: 0.6rem;">
+          Masuk Sistem
+        </button>
+      </form>
+
+      <div class="login-back-link">
+        <a href="index.html">← Kembali ke Beranda Publik</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - PRIT-KOTAS BPS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-fade">
+
+  <nav class="navbar-desain">
+    <div class="navbar-brand">
+      <img src="logo.png" alt="Logo BPS" onerror="this.style.display='none';">
+      <div class="navbar-brand-text">
+        <h3>BADAN PUSAT STATISTIK</h3>
+        <span>KOTA TASIKMALAYA</span>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <span style="font-size: 0.9rem; font-weight: 500; color: var(--teks-muted);">Halo, <strong style="color: var(--teks-gelap);">Pegawai Admin</strong></span>
+      <a href="antigratifikasi.html" class="btn-outline" style="font-size: 0.85rem; padding: 0.5rem 1rem;"><i class="fa-solid fa-gift"></i> TAS ANTIK (Tasikmalaya Antigratifikasi)</a>
+      <a href="input-manual.html" class="btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1rem;"><i class="fa-solid fa-plus"></i> Konsultasi DTSEN</a>
+      <button class="btn-logout" id="btnLogout">Keluar Sistem</button>
+    </div>
+  </nav>
+
+  <main class="dashboard-container">
+
+    <div style="margin-bottom: 1.6rem;">
+      <h1 style="font-size: 1.8rem; margin: 0 0 0.4rem 0;">Dashboard Laporan</h1>
+      <p style="color: var(--teks-muted); font-size: 0.95rem; margin: 0;">
+        Jumlah data pengaduan online masyarakat dengan status menunggu, diproses dan selesai.
+      </p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div>
+          <h3>Menunggu</h3>
+          <p class="number" id="pendingCount" style="color: var(--merah-utama);">0</p>
+        </div>
+        <span class="stat-icon"><i class="fa-solid fa-hourglass-half"></i></span>
+      </div>
+      <div class="stat-card">
+        <div>
+          <h3>Diproses</h3>
+          <p class="number" id="processCount" style="color: var(--jingga-proses);">0</p>
+        </div>
+        <span class="stat-icon"><i class="fa-solid fa-arrows-rotate"></i></span>
+      </div>
+      <div class="stat-card">
+        <div>
+          <h3>Selesai</h3>
+          <p class="number" id="doneCount" style="color: var(--hijau-sukses);">0</p>
+        </div>
+        <span class="stat-icon"><i class="fa-solid fa-circle-check"></i></span>
+      </div>
+    </div>
+
+    <div class="dashboard-grafik-grid">
+      <div class="panel-card tren-card">
+        <h3>
+          <span>Laporan Pengaduan Masyarakat (6 Bulan Terakhir)</span>
+          <span class="chart-legend">
+            <span><span class="dot dot-masuk"></span>Masuk</span>
+            <span><span class="dot dot-proses"></span>Diproses</span>
+            <span><span class="dot dot-selesai"></span>Selesai</span>
+          </span>
+        </h3>
+        <div class="bar-chart" id="trendChart"></div>
+        <div class="bar-chart-labels" id="trendChartLabels"></div>
+      </div>
+
+      <div class="panel-card persen-card">
+        <h3>Statistik Kategori</h3>
+        <div id="categoryStats"></div>
+      </div>
+    </div>
+
+    <div class="category-panel">
+      <div class="category-panel-header">
+        <h3><i class="fa-solid fa-file-lines"></i> Pengaduan Masyarakat</h3>
+        <span class="chev">▾</span>
+      </div>
+      <div class="category-panel-body">
+        <div class="panel-toolbar">
+          <input type="text" class="panel-search" placeholder="Cari nama/email/tanggal...">
+          <div>
+            <button onclick="exportTable('pengaduanTable', 'pengaduan')" class="btn-outline btn-small">Unduh Excel</button>
+            <button onclick="exportPDF('pengaduanTable', 'pengaduan')" class="btn-outline btn-small">Unduh PDF</button>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table id="pengaduanTable">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Kategori</th>
+                <th>Materi</th>
+                <th>Laporan</th>
+                <th>Saran</th>
+                <th>Tanggal</th>
+                <th>Status</th>
+                <th>Bukti</th>
+                <th>Tanggapan</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="pengaduanTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-panel">
+      <div class="category-panel-header">
+        <h3><i class="fa-solid fa-comment-dots"></i> KoSan (Kotak Saran)</h3>
+        <span class="chev">▾</span>
+      </div>
+      <div class="category-panel-body">
+        <div class="panel-toolbar">
+          <input type="text" class="panel-search" placeholder="Cari nama/email/tanggal...">
+          <div>
+            <button onclick="exportTable('saranTable', 'saran')" class="btn-outline btn-small">Unduh Excel</button>
+            <button onclick="exportPDF('saranTable', 'saran')" class="btn-outline btn-small">Unduh PDF</button>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table id="saranTable">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Telepon</th>
+                <th>Kategori</th>
+                <th>Judul</th>
+                <th>Isi Saran</th>
+                <th>Berkas Pendukung</th>
+                <th>Tanggal</th>
+              </tr>
+            </thead>
+            <tbody id="saranTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-panel">
+      <div class="category-panel-header">
+        <h3><i class="fa-solid fa-gift"></i> Antigratifikasi</h3>
+        <span class="chev">▾</span>
+      </div>
+      <div class="category-panel-body">
+        <div class="panel-toolbar">
+          <input type="text" class="panel-search" placeholder="Cari nama/instansi/tanggal...">
+          <div>
+            <button onclick="exportTable('gratifikasiTable', 'gratifikasi')" class="btn-outline btn-small">Unduh Excel</button>
+            <button onclick="exportPDF('gratifikasiTable', 'gratifikasi')" class="btn-outline btn-small">Unduh PDF</button>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table id="gratifikasiTable">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama Pemberi</th>
+                <th>Instansi</th>
+                <th>Bentuk</th>
+                <th>Tindak Lanjut Barang</th>
+                <th>Alasan</th>
+                <th>Foto</th>
+                <th>Tanggal</th>
+              </tr>
+            </thead>
+            <tbody id="gratifikasiTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-panel">
+      <div class="category-panel-header">
+        <h3><i class="fa-solid fa-building-user"></i> Konsultasi DTSEN</h3>
+        <span class="chev">▾</span>
+      </div>
+      <div class="category-panel-body">
+        <div class="panel-toolbar">
+          <input type="text" class="panel-search" placeholder="Cari nama/telepon/tanggal...">
+          <div>
+            <button onclick="exportTable('offlineTable', 'offline')" class="btn-outline btn-small">Unduh Excel</button>
+            <button onclick="exportPDF('offlineTable', 'offline')" class="btn-outline btn-small">Unduh PDF</button>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table id="offlineTable">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Alamat</th>
+                <th>Telepon</th>
+                <th>Materi</th>
+                <th>Jawaban Petugas</th>
+                <th>Nama Petugas</th>
+                <th>Dokumentasi</th>
+                <th>Tanggal</th>
+              </tr>
+            </thead>
+            <tbody id="offlineTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer-desain footer-desain-center">
+    <div>
+      <strong style="color: var(--merah-gelap);">PRIT-KOTAS</strong> &copy; 2026 A3N2. BPS Kota Tasikmalaya. 
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="modalTanggapan">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Tanggapi Pengaduan</h3>
+        <button class="modal-close" id="btnTutupModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label for="textareaTanggapan">Tulis tanggapan Anda</label>
+        <textarea id="textareaTanggapan" rows="5" placeholder="Tulis tanggapan resmi di sini..."></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-outline" id="btnBatalModal">Batal</button>
+        <button class="btn-primary" id="btnSimpanTanggapanModal">Simpan Tanggapan</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

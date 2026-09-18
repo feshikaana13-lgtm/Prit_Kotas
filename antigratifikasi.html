@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulir Anti Gratifikasi - PRIT-KOTAS BPS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-fade">
+
+  <nav class="navbar-desain">
+    <div class="navbar-brand">
+      <img src="logo.png" alt="Logo BPS" onerror="this.style.display='none';">
+      <div class="navbar-brand-text">
+        <h3>BADAN PUSAT STATISTIK</h3>
+        <span>KOTA TASIKMALAYA</span>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <span style="font-size: 0.9rem; font-weight: 500;">Halo, <strong>Pegawai</strong></span>
+      <a href="dashboard-staf.html" class="btn-outline" style="font-size: 0.85rem; padding: 0.45rem 0.9rem;">← Kembali</a>
+    </div>
+  </nav>
+
+  <main style="flex: 1; max-width: 800px; width: 92%; margin: 2.5rem auto 3.5rem auto;">
+
+    <div id="formContainer">
+      <div style="margin-bottom: 1.5rem;">
+        <span class="tag-pill"><i class="fa-solid fa-gift"></i> Laporan Anti-Gratifikasi</span>
+        <h1 style="font-size: 1.8rem; margin: 0.4rem 0 0.3rem 0;">Formulir Anti Gratifikasi BPS Kota Tasikmalaya</h1>
+        <p style="color: var(--teks-muted); margin: 0; font-size: 0.95rem;">Gunakan formulir ini untuk mencatat laporan penerimaan gratifikasi oleh pegawai. Pastikan seluruh data dan bukti foto dilampirkan secara lengkap dan akurat.</p>
+      </div>
+
+      <form id="gratifikasiForm">
+
+        <section class="form-section reveal">
+          <h3 class="form-section-title"><i class="fa-solid fa-calendar-days"></i> 1. Tanggal Penerimaan</h3>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label for="tanggalGratifikasi">Tanggal Penerimaan Gratifikasi *</label>
+            <input type="date" id="tanggalGratifikasi" required>
+          </div>
+        </section>
+
+        <section class="form-section reveal">
+          <h3 class="form-section-title"><i class="fa-solid fa-user"></i> 2. Data Pemberi</h3>
+          <div class="form-group">
+            <label>Nama Pemberi *</label>
+            <input type="text" id="namaPemberi" required placeholder="Masukkan nama lengkap pemberi">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label>Instansi/Lembaga Pemberi *</label>
+            <input type="text" id="instansiPemberi" required placeholder="Nama instansi atau lembaga pemberi">
+          </div>
+        </section>
+
+        <section class="form-section reveal">
+          <h3 class="form-section-title"><i class="fa-solid fa-gift"></i> 3. Pemberian dalam Bentuk Apa?</h3>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label>Boleh dicentang lebih dari 1 kali *</label>
+            <div class="checkbox-list" id="bentukPemberianList">
+              <label class="checkbox-option">
+                <input type="checkbox" name="bentuk" value="Uang">
+                <span>Uang</span>
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="bentuk" value="Parcel/Paket Lebaran">
+                <span>Parcel/Paket Lebaran</span>
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="bentuk" value="Lainnya" id="bentukLainnyaCheck">
+                <span>Lainnya</span>
+              </label>
+            </div>
+            <div class="checkbox-option-other-input" id="bentukLainnyaWrapper">
+              <input type="text" id="bentukLainnyaText" placeholder="Sebutkan bentuk pemberian lainnya...">
+            </div>
+            <small id="bentukError" style="color: var(--merah-utama); display: none; margin-top: 0.5rem;">Pilih minimal salah satu bentuk pemberian.</small>
+          </div>
+        </section>
+
+        <section class="form-section reveal">
+          <h3 class="form-section-title"><i class="fa-solid fa-camera"></i> 4. Foto Barang yang Diberikan</h3>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label>Unggah Foto Barang *</label>
+            <div class="dropzone" id="dropzoneGratifikasi">
+              <span class="dz-icon"><i class="fa-solid fa-cloud-arrow-up"></i></span>
+              <div id="dropzoneGratifikasiLabel"><strong>Unggah foto barang</strong> atau seret ke sini</div>
+              <small>Upload up to 10 supported files. Max 10 MB per file.</small>
+            </div>
+            <input type="file" id="lampiranGratifikasi" accept="image/*" multiple style="display:none;">
+          </div>
+        </section>
+
+        <section class="form-section reveal">
+          <h3 class="form-section-title"><i class="fa-solid fa-pen"></i> 5. Alasan Penerimaan</h3>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label>Alasan pemberian tersebut diterima oleh pegawai? *</label>
+            <textarea id="alasanDiterima" rows="5" required placeholder="Jelaskan alasan/konteks mengapa pemberian tersebut diterima oleh pegawai..."></textarea>
+          </div>
+        </section>
+
+        <section class="form-section reveal">
+          <h3 class="form-section-title"><i class="fa-solid fa-box-open"></i> 6. Tindak Lanjut Barang yang Diterima *</h3>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label><input type="radio" name="tindakLanjutBarang" value="Diserahkan kepada panti sosial" required> Diserahkan kepada panti sosial</label>
+            <label><input type="radio" name="tindakLanjutBarang" value="Ditolak atau dikembalikan" required> Ditolak atau dikembalikan</label>
+          </div>
+        </section>
+
+        <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 0.5rem;">
+          <a href="dashboard-staf.html" class="btn-outline">Batal</a>
+          <button type="submit" class="btn-primary" id="btnSimpanGratifikasi" style="padding: 0.75rem 1.5rem;">
+            <i class="fa-solid fa-floppy-disk"></i> Simpan Laporan Gratifikasi
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div id="successContainer" class="success-card">
+      <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+      <h2 style="color: var(--hijau-sukses); margin-bottom: 0.5rem; font-size: 1.5rem;">Laporan Gratifikasi Berhasil Disimpan</h2>
+      <p style="color: var(--teks-muted); margin-bottom: 2rem; font-size: 0.95rem; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+        Data laporan penerimaan gratifikasi telah berhasil dicatat ke sistem pusat PRIT-KOTAS BPS untuk keperluan pemeriksaan dan pengendalian gratifikasi.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <button onclick="location.reload()" class="btn-outline">Input Laporan Lain</button>
+        <a href="dashboard-staf.html" class="btn-primary">Kembali ke Dashboard</a>
+      </div>
+    </div>
+
+  </main>
+
+  <button type="button" class="floating-back-button" title="Kembali ke dashboard" aria-label="Kembali ke dashboard" onclick="if (history.length > 1) { history.back(); } else { window.location.href = 'dashboard-staf.html'; }">
+    <i class="fa-solid fa-arrow-left"></i>
+  </button>
+
+  <footer class="footer-desain footer-desain-center">
+    <div>
+      <strong style="color: var(--merah-gelap);">PRIT-KOTAS</strong> &copy; 2026 A3N2. BPS Kota Tasikmalaya. 
+    </div>
+  </footer>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

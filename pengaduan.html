@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Pengaduan - PRIT-KOTAS BPS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-fade">
+
+  <nav class="navbar-desain">
+    <a href="index.html" class="navbar-brand">
+      <img src="logo.png" alt="Logo BPS" onerror="this.style.display='none';">
+      <div class="navbar-brand-text">
+        <h3>PRIT-KOTAS</h3>
+        <span>BPS Kota Tasikmalaya</span>
+      </div>
+    </a>
+    <div style="display:flex; align-items:center; gap:0.7rem;">
+      <a href="cek-status.html" class="btn-outline" style="font-size: 0.85rem; padding: 0.5rem 1rem;"><i class="fa-solid fa-magnifying-glass"></i> Cek Status</a>
+      <a href="login.html" class="btn-login">Login Admin</a>
+    </div>
+  </nav>
+
+  <main style="flex: 1;">
+    <div class="pengaduan-layout">
+
+      <aside class="process-sidebar">
+        <h4 style="color: var(--merah-gelap); margin-top: 0; margin-bottom: 1.2rem; font-size: 1rem;">Tahapan Proses Pengaduan</h4>
+
+        <div class="process-step active">
+          <div class="process-badge">1</div>
+          <div>
+            <strong style="font-size: 0.85rem; display: block;">Pengisian Formulir</strong>
+            <small style="color: var(--teks-muted); font-size: 0.78rem;">Lengkapi data pelapor, kategori, materi, dan kronologi secara detail.</small>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-badge">2</div>
+          <div>
+            <strong style="font-size: 0.85rem; display: block;">Belum Ditangani</strong>
+            <small style="color: var(--teks-muted); font-size: 0.78rem;">Laporan masuk ke sistem dan menunggu diperiksa admin.</small>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-badge">3</div>
+          <div>
+            <strong style="font-size: 0.85rem; display: block;">Dalam Proses</strong>
+            <small style="color: var(--teks-muted); font-size: 0.78rem;">Laporan diteruskan ke tim penanganan untuk investigasi/solusi.</small>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-badge">4</div>
+          <div>
+            <strong style="font-size: 0.85rem; display: block;">Selesai</strong>
+            <small style="color: var(--teks-muted); font-size: 0.78rem;">Hasil penanganan dan tanggapan final diberikan kepada pelapor.</small>
+          </div>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--garis); margin: 1.2rem 0;">
+        <p style="color: var(--teks-muted); font-size: 0.78rem; margin: 0; line-height: 1.4;">
+          <strong>Jaminan Kerahasiaan:</strong> Identitas Anda hanya diketahui oleh petugas verifikator berwenang dan tidak ditampilkan ke publik.
+        </p>
+      </aside>
+
+      <section>
+        <div class="form-section reveal">
+
+          <div style="margin-bottom: 1.5rem;">
+            <span class="tag-pill">Formulir Resmi</span>
+            <h1 style="font-size: 1.6rem; margin: 0.3rem 0 0.4rem 0;">Formulir Pengaduan Masyarakat</h1>
+            <p style="color: var(--teks-muted); font-size: 0.9rem; margin: 0;">Sistem pengaduan tanpa login atau registrasi. Silakan isi formulir di bawah ini dengan data yang valid dan dapat dipertanggungjawabkan.</p>
+          </div>
+
+          <div class="alert alert-error" id="errorAlert">Mohon lengkapi semua kolom wajib bertanda (*).</div>
+
+          <div class="criteria-box">
+            <strong>Sebelum Mengisi, Pahami Hak-hak Berikut:</strong>
+            <ol>
+              <li><strong>Pelapor</strong> berhak atas kerahasiaan identitas dan perlindungan dari tindakan pembalasan (retaliasi) atas laporan beritikad baik.</li>
+              <li><strong>Terlapor</strong> berhak atas pembelaan diri, klarifikasi, dan asas praduga tak bersalah selama proses pemeriksaan.</li>
+              <li><strong>Tim Pemeriksa</strong> wajib menjaga kerahasiaan dokumen serta bertindak profesional, objektif, dan bebas konflik kepentingan.</li>
+              <li>Pengaduan akan ditindaklanjuti apabila memiliki informasi yang jelas, bukti relevan, dan identitas diri yang benar. Fokus penanganan berada pada substansi laporan.</li>
+            </ol>
+          </div>
+
+          <div class="consent-box consent-box-top">
+            <input type="checkbox" id="consentCheck" required>
+            <label for="consentCheck">Saya telah membaca dan memahami informasi hak-hak pelapor, terlapor, dan tim pemeriksa di atas, serta menyatakan bahwa informasi yang saya berikan benar dan dapat dipertanggungjawabkan.</label>
+          </div>
+          <p class="consent-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Formulir di bawah ini akan aktif setelah Anda mencentang persetujuan di atas.
+          </p>
+
+          <form id="pengaduanForm">
+
+            <div id="formFieldsWrapper" class="form-fields-gated fields-locked">
+
+              <div style="margin-bottom: 1.5rem;">
+                <h3 class="form-section-title">1. Identitas Pelapor</h3>
+                <div class="form-group">
+                  <label for="tanggalPengaduan">Tanggal Pengaduan *</label>
+                  <input type="date" id="tanggalPengaduan" required disabled>
+                </div>
+                <div class="form-group">
+                  <label>Nama Lengkap *</label>
+                  <input type="text" id="nama" required placeholder="Nama lengkap sesuai identitas" disabled>
+                </div>
+                <div class="grid-2">
+                  <div class="form-group">
+                    <label>Alamat Email *</label>
+                    <input type="email" id="email" required placeholder="email@pelapor.com" disabled>
+                    <small>Digunakan untuk cek status mandiri.</small>
+                  </div>
+                  <div class="form-group">
+                    <label>Nomor Telepon / WhatsApp *</label>
+                    <input type="text" id="telepon" required placeholder="08xxxxxxxxxx" oninput="this.value = this.value.replace(/[^0-9]/g, '')" disabled>
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 1.5rem;">
+                <h3 class="form-section-title">2. Kategori Pelapor *</h3>
+                <div class="radio-list">
+                  <label class="radio-option">
+                    <input type="radio" name="kategori" value="Masyarakat Umum" required disabled>
+                    <span>Masyarakat Umum</span>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="kategori" value="Instansi Pemerintah/Lembaga Negara" disabled>
+                    <span>Instansi Pemerintah / Lembaga Negara</span>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="kategori" value="Pegawai BPS" disabled>
+                    <span>Pegawai BPS</span>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="kategori" value="Pelajar/Mahasiswa" disabled>
+                    <span>Pelajar / Mahasiswa</span>
+                  </label>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 1.5rem;">
+                <h3 class="form-section-title">3. Materi Pengaduan *</h3>
+                <div class="radio-list">
+                  <label class="radio-option">
+                    <input type="radio" name="materi" value="Pelanggaran Sumpah Jabatan" required disabled>
+                    <span>Pelanggaran Sumpah Jabatan</span>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="materi" value="Pelanggaran terhadap peraturan disiplin PNS" disabled>
+                    <span>Pelanggaran terhadap Peraturan Disiplin PNS</span>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="materi" value="Pelanggaran Hukum Pidana / Korupsi / Gratifikasi" disabled>
+                    <span>Pelanggaran Hukum Pidana / Korupsi / Gratifikasi</span>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="materi" value="Mal Administrasi / Pelayanan Publik Buruk" disabled>
+                    <span>Mal Administrasi / Pelayanan Publik Buruk</span>
+                  </label>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 1.5rem;">
+                <h3 class="form-section-title">4. Uraian Laporan & Bukti</h3>
+
+                <div class="criteria-box">
+                  <strong>Kriteria Kelengkapan Pengaduan:</strong>
+                  <ol>
+                    <li>Melibatkan pegawai BPS atau pihak lain yang berkaitan dengan pelanggaran oleh pegawai BPS.</li>
+                    <li>Menjelaskan siapa, melakukan apa, kapan, dimana, mengapa, dan bagaimana (5W + 1H).</li>
+                    <li>Dilengkapi dengan bukti permulaan (data, dokumen, foto, atau rekaman) yang mendukung.</li>
+                    <li>Mencantumkan informasi kontak yang dapat dihubungi untuk klarifikasi lebih lanjut.</li>
+                  </ol>
+                </div>
+
+                <div class="form-group">
+                  <label>Uraian Kronologi / Rincian Pengaduan *</label>
+                  <textarea id="isi_laporan" rows="6" required placeholder="Tuliskan kronologi peristiwa secara rinci sesuai kriteria di atas..." disabled></textarea>
+                  <div class="form-group">
+  <label>Saran / Usulan Anda</label>
+  <textarea id="saran_pengaduan" rows="3" placeholder="Tuliskan saran atau usulan terkait pengaduan ini (jika ada)..." disabled></textarea>
+  <small>Kolom ini menjadi bagian dari laporan pengaduan dan akan tampil kepada admin.</small>
+</div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label>Lampiran Bukti (Dokumen/Foto/Rekaman)</label>
+                  <input type="file" id="lampiran" multiple disabled>
+                </div>
+              </div>
+
+            </div>
+
+            <div style="text-align: right; margin-top: 1.5rem;">
+              <button type="submit" class="btn-primary" id="btnKirim" style="padding: 0.75rem 2rem;" disabled>Kirim Pengaduan</button>
+            </div>
+
+          </form>
+        </div>
+
+        <div id="successCard" class="success-card">
+          <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+          <h2 style="color: var(--hijau-sukses); margin-bottom: 0.5rem;">Pengaduan Berhasil Dikirim</h2>
+          <p style="color: var(--teks-muted); margin-bottom: 1.8rem; font-size: 0.95rem; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+            Laporan Anda telah berhasil tercatat di sistem pusat PRIT-KOTAS BPS. Anda dapat memantau status tindak lanjut secara berkala menggunakan alamat email Anda.
+          </p>
+          <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <a href="cek-status.html" class="btn-primary">Cek Status Laporan</a>
+            <a href="index.html" class="btn-outline">Kembali ke Beranda</a>
+          </div>
+        </div>
+
+      </section>
+
+      <button type="button" class="floating-back-button" title="Kembali ke halaman sebelumnya" aria-label="Kembali ke halaman sebelumnya" onclick="if (history.length > 1) { history.back(); } else { window.location.href = 'index.html'; }">
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
+
+    </div>
+  </main>
+
+  <footer class="footer-desain footer-desain-center">
+    <div>
+      <strong style="color: var(--merah-gelap);">PRIT-KOTAS</strong> &copy; 2026 A3N2. BPS Kota Tasikmalaya. 
+    </div>
+  </footer>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

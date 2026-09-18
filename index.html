@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beranda - PRIT-KOTAS | BPS Kota Tasikmalaya</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-fade">
+
+  <nav class="navbar-desain navbar-home">
+    <div class="navbar-brand">
+      <img src="logo.png" alt="Logo BPS" class="logo-bps">
+      <div class="navbar-brand-text">
+        <h3>BADAN PUSAT STATISTIK</h3>
+        <span>KOTA TASIKMALAYA</span>
+      </div>
+    </div>
+
+    <div class="navbar-right">
+      <div class="navbar-extra-logos">
+        <img src="logo-berakhlak.png" alt="Logo BerAKHLAK" class="extra-logo" onerror="this.style.display='none';">
+        <img src="logo-bangga.png" alt="Logo Bangga Melayani Bangsa" class="extra-logo" onerror="this.style.display='none';">
+      </div>
+      <a href="login.html" class="btn-login" aria-label="Login Admin" title="Login Admin">
+        <i class="fa-solid fa-user login-profile-icon" aria-hidden="true"></i>
+        <span class="login-label">Login Admin</span>
+      </a>
+    </div>
+  </nav>
+
+  <header class="hero-section">
+  <div class="hero-logo-container">
+    <img src="prit_kotas.png" alt="Logo PRIT-KOTAS" class="hero-logo" onerror="this.style.display='none';">
+  </div>
+    <h1 class="hero-title">Layanan Konsultasi, Pengaduan & Saran</h1>
+    <p class="hero-subtitle">Sampaikan pengaduan dugaan tindak pidana korupsi, pelanggaran disiplin, dan/atau kode etik di lingkungan BPS Kota Tasikmalaya.<br>Untuk Kota BPS Tasikmalaya yang lebih baik anda dapat menyampaikan saran & masukan<br><strong style="display: block; font-size: 1.5em; font-weight: 500;">Identitas Anda dijamin aman dan rahasia</strong></p>
+
+    <div class="feature-grid">
+      <a href="https://wa.me/6285117173278" target="_blank" class="feature-card">
+        <div class="qr-frame">
+          <img src="QR BPS.jpeg" alt="QR BPS">
+        </div>
+        <h3>Chat WhatsApp</h3>
+        <p>Konsultasi cepat dan mudah via layanan pesan 24 jam.</p>
+      </a>
+
+      <a href="pengaduan.html" class="feature-card">
+        <div class="feature-icon feature-icon-large"><i class="fa-solid fa-file-circle-check"></i></div>
+        <h3>Ajukan Pengaduan</h3>
+        <p>Mulai proses pelaporan dengan mengisi form resmi. Cek status laporan juga tersedia di halaman ini.</p>
+      </a>
+
+      <a href="saran.html" class="feature-card">
+        <div class="feature-icon feature-icon-large"><i class="fa-solid fa-comment-dots"></i></div>
+        <h3>KoSan (Kotak Saran)</h3>
+        <p>Sampaikan saran dan masukan untuk pelayanan BPS Kota Tasikmalaya yang lebih baik</p>
+      </a>
+    </div>
+  </header>
+
+  <section style="max-width:1100px;width:90%;margin:3rem auto 0 auto;">
+    <a href="panduan.html" class="feature-card reveal" style="border-top-color: var(--merah-terang); text-align:left; display:flex; align-items:center; gap:1.2rem; padding: 1.6rem;">
+      <div class="feature-icon" style="margin:0;"><i class="fa-solid fa-book-open"></i></div>
+      <div>
+        <h3 style="margin-bottom:0.3rem;">Panduan Penggunaan</h3>
+        <p> Pelajari cara menggunakann layanan PRIT_KOTAS.</p>
+      </div>
+    </a>
+  </section>
+
+  <section class="monitor-section reveal">
+    <div class="monitor-header">
+      <h2>Monitoring Laporan</h2>
+      <p>Rekapitulasi jumlah laporan yang telah masuk ke sistem PRIT-KOTAS secara real-time.</p>
+    </div>
+
+    <div class="monitor-tabs">
+      <button class="monitor-tab active" data-target="tab-pengaduan">
+        <i class="fa-solid fa-file-lines"></i> Monitoring Pengaduan
+      </button>
+      <button class="monitor-tab" data-target="tab-saran">
+        <i class="fa-solid fa-comment-dots"></i> Monitoring Saran
+      </button>
+    </div>
+
+    <div id="tab-pengaduan" class="monitor-tab-content active">
+      <div class="monitor-grid">
+        <div class="monitor-card">
+          <div class="monitor-icon"><i class="fa-solid fa-inbox"></i></div>
+          <div class="monitor-number" id="monTotal">0</div>
+          <div class="monitor-label">Total Pengaduan Masuk</div>
+        </div>
+        <div class="monitor-card monitor-card--jingga">
+          <div class="monitor-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+          <div class="monitor-number" id="monDiproses">0</div>
+          <div class="monitor-label">Diproses</div>
+        </div>
+        <div class="monitor-card monitor-card--hijau">
+          <div class="monitor-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="monitor-number" id="monSelesai">0</div>
+          <div class="monitor-label">Selesai</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-saran" class="monitor-tab-content">
+      <div class="monitor-grid">
+        <div class="monitor-card">
+          <div class="monitor-icon"><i class="fa-solid fa-comment-dots"></i></div>
+          <div class="monitor-number" id="monSaran">0</div>
+          <div class="monitor-label">Total Saran Masuk</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main style="flex: 1;">
+    <section class="info-section reveal">
+      <div>
+        <span class="tag-pill">Hubungi Layanan Kami</span>
+        <h2 style="font-size: 1.8rem; margin: 0.5rem 0 1rem 0;">Kontak & Lokasi Kantor</h2>
+        <p style="color: var(--teks-muted); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.6;">
+          Butuh bantuan langsung atau ingin berkonsultasi? Tim kami siap melayani pertanyaan Anda dengan jaminan kerahasiaan penuh.
+        </p>
+
+        <div class="contact-item">
+          <div class="contact-icon-box"><i class="fa-solid fa-location-dot"></i></div>
+          <div class="contact-details">
+            <strong>ALAMAT KANTOR</strong>
+            <span>Jl. Sukarindik No.71, Tasikmalaya 46151, Jawa Barat</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon-box"><i class="fa-solid fa-envelope"></i></div>
+          <div class="contact-details">
+            <strong>EMAIL RESMI</strong>
+            <span>bps3278@bps.go.id</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon-box"><i class="fa-brands fa-whatsapp"></i></div>
+          <div class="contact-details">
+            <strong>WHATSAPP HOTLINE</strong>
+            <span style="font-weight: 600; color: var(--merah-utama);">0851-1717-3278</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-card">
+        <div class="map-embed-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=BPS+Kota+Tasikmalaya,+Jl.+Sukarindik+No.71,+Tasikmalaya&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Lokasi BPS Kota Tasikmalaya">
+          </iframe>
+        </div>
+        <div class="map-badge"><i class="fa-solid fa-location-dot"></i> BPS Kota Tasikmalaya</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-desain">
+    <div>
+      <strong style="color: var(--merah-gelap);">PRIT-KOTAS</strong> &copy; 2026 A3N2. BPS Kota Tasikmalaya. 
+    </div>
+    <div class="footer-links">
+      <a href="panduan.html">Kebijakan Privasi</a>
+      <a href="panduan.html">Panduan Hak & Kewajiban</a>
+    </div>
+  </footer>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
